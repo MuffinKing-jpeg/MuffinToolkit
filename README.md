@@ -2,7 +2,7 @@
 
 # MuffinToolkit
 
-[![Deploy to Firebase Hosting](https://github.com/MuffinKing-jpeg/MuffinToolkit/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/MuffinKing-jpeg/MuffinToolkit/actions/workflows/firebase-hosting-merge.yml)
+[![Deploy to Firebase Hosting](https://github.com/MuffinKing-jpeg/MuffinToolkit/actions/workflows/firebase-hosting-merge.yml/badge.svg?branch=main)](https://github.com/MuffinKing-jpeg/MuffinToolkit/actions/workflows/firebase-hosting-merge.yml)
 
 Set of random tools.
 
