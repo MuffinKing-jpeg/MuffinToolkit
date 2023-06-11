@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "MuffinToolkit": {
+      "i18n": {
+        "sourceLocale": {
+          "code": "en"
+        },
+        "locales": {
+          //          "ru": "src/locale/messages.ru.xlf",
+          //          "uk": "src/locale/messages.uk.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +26,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": [
+              "en"
+            ],
             "outputPath": "dist/muffin-toolkit",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -97,8 +109,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

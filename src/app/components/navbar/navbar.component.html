@@ -1,0 +1,70 @@
+<nav [ngClass]="{
+    open: toggleNav,
+    'sm:w-auto': !toggleNav,
+    'top-10': window.document.body.offsetWidth <= 640 && toggleNav,
+    'top-full': window.document.body.offsetWidth <= 640 && !toggleNav,
+  }"
+     class="navbar
+     fixed
+     bottom-0
+     w-screen
+     sm:left-0
+     sm:top-0
+     3xl:block">
+  <div (mouseenter)="window.document.body.offsetWidth <= 1536 && (toggleNav = true)"
+       (mouseleave)=" window.document.body.offsetWidth <= 1536 && window.document.body.offsetWidth >= 640  && (toggleNav = false)"
+       class="navbar-wrapper
+       h-full
+       overflow-clip
+       bg-navbar
+       p-3
+       text-navbar-text
+       sm:w-navbarClosed
+       sm:hover:w-navbarOpened
+       2xl:w-navbarOpened
+       relative
+flex
+flex-col">
+
+    <a class="whitespace-nowrap text-accent-470" routerLink="/">
+      <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
+      <h2 class="ml-5 inline text-3xl">{{title}}</h2>
+    </a>
+    <ul class="flex flex-col gap-1.5 mt-2 mb-auto overflow-clip">
+      <li *ngFor="let item of modulesManifest">
+        <a class="whitespace-nowrap p-1 bg-accent-200 h-14 block rounded-roundEdge hover:bg-accent-300"
+           routerLink="{{item.path}}" routerLinkActive="bg-accent-470">
+          <span class="w-12 inline-flex justify-center align-middle">
+            <i class="{{item.data?.['icon']}} text-4xl m-auto"></i>
+          </span>
+          <h3 class="inline-flex align-middle ml-6 h-full pr-1">
+            <span class="my-auto">{{item.title}}</span>
+          </h3>
+        </a>
+      </li>
+    </ul>
+    <app-theme-btn></app-theme-btn>
+    <app-locale-selector></app-locale-selector>
+  </div>
+  <div (click)="toggleNav = !toggleNav"
+       [ngClass]="{
+       'rounded-t-2xl': !toggleNav
+       }"
+       class=" navbar-btn
+       bottom-full
+        w-full
+        left-0
+        right-0
+        absolute
+        p-4
+        flex
+        rounded-t-2xl
+        bg-dark-main
+        h-10">
+    <i [ngClass]="{
+    'fa-rotate-180': toggleNav
+    }" class="fa-solid fa-angles-up text-accent-470 mx-auto"></i>
+  </div>
+</nav>
+
+

@@ -1,0 +1,18 @@
+nav.open {
+  width: 100vw;
+  backdrop-filter: brightness(50%);
+}
+
+.navbar {
+  transition: backdrop-filter var(--transition-main), top var(--transition-main);
+
+  &-wrapper {
+    transition: width var(--transition-main);
+  }
+}
+
+.navbar-btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transition: border-top-left-radius var(--transition-secondary), border-top-right-radius, var(--transition-secondary);
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="EN" datatype="plaintext" original="ng2.template" target-language="uk">
+    <body>
+      <trans-unit id="7308540255881911740" datatype="html">
+        <source>welcome-page works!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/welcome-page/welcome-page.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      <target xml:lang="uk">Калькулятор знижок</target>
+</trans-unit>
+      <trans-unit id="4946808070431285030" datatype="html">
+        <source>Discount calculator</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules-manifest.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      <target xml:lang="uk">Калькулятор знижок</target>
+</trans-unit>
+    </body>
+  </file>
+</xliff>

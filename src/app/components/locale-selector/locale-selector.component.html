@@ -1,0 +1,14 @@
+<div *ngIf="langConfig.length > 1"
+     class="bg-accent-200 whitespace-nowrap h-14 flex w-full rounded-roundEdge overflow-clip mt-2">
+  <span class="w-16 flex justify-center align-middle locale-icon">
+    <i class="fa-solid fa-language text-4xl m-auto"></i>
+  </span>
+  <ul class="locale-selector block overflow-clip ml-2 h-full justify-between align-middle w-48">
+    <li *ngFor="let item of langConfig"
+        [ngClass]="{
+        'bg-accent-470': item.url === activeLang
+        }" class="inline-block h-full justify-center align-middle text-center hover:bg-accent-300 w-14">
+      <button (click)="window.location.pathname = item.url" class="w-full h-full">{{item.url.toUpperCase()}}</button>
+    </li>
+  </ul>
+</div>
