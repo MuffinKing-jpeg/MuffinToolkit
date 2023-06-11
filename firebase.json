@@ -29,12 +29,6 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "redirects": [
-      {
-        "source": "/**",
-        "destination": "/en/index.html"
-      }
-    ],
     "rewrites": [
       {
         "source": "/uk",
@@ -58,6 +52,14 @@
       },
       {
         "source": "/en/**",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/**",
         "destination": "/en/index.html"
       }
     ],
