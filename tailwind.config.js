@@ -5,6 +5,11 @@ module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{html,ts}"],
   theme: {
+    fontFamily: {
+      sans: '\'Rubik\', \'Yantramanav\',\'Oxygen\', sans-serif',
+      body: '\'Oxygen\', sans-serif;',
+      mono: 'ui-monospace, monospace'
+    },
     screens: {
       sm: "640px",
       md: "768px",
@@ -28,18 +33,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        accent: {
-          900: "#FBD0D9",
-          800: "#F7A2B3",
-          700: "#F2738C",
-          600: "#EE4466",
-          500: "#EA1540",
-          470: "#DC143C",
-          400: "#BB1133",
-          300: "#8C0D26",
-          200: "#5E081A",
-          100: "#2F040D",
-        },
         "dark-navbar": "#1E1F22",
         "dark-navbar-text": "#FFFFFF",
         "light-navbar": "#E3E5E8",
@@ -48,8 +41,8 @@ module.exports = {
         "dark-secondary": "#FFFFFF",
         "light-main": "#F8F8FC",
         "light-secondary": "#060607",
-        "field-dark": "#383A40",
-        "field-light": "#EBEDEF"
+        "field-dark": "#4e5059",
+        "field-light": "#d4d8d9"
       },
       spacing: {
         navbarClosed: '5rem',

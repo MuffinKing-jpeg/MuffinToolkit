@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import LangConf from '../../../config/lang.json'
+import {environment} from "../../../environments/environment";
 
 const pathRegEx = /^\/([^/]+)/
 
@@ -14,6 +15,7 @@ export class LocaleSelectorComponent implements OnInit {
 
   globalPath = window.location.pathname;
   protected readonly window = window;
+  protected readonly environment = environment;
 
   ngOnInit() {
     console.log()

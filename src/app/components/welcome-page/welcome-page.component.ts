@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import Config from "../../../config/main.json";
+import {modulesManifest} from "../../modules-manifest";
+import {ThemeServiceService} from "../../services/theme-service.service";
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class WelcomePageComponent {
 
+  title = Config.projectName;
+  protected readonly modulesManifest = modulesManifest;
+
+  constructor(public theme: ThemeServiceService) {
+  }
 }
