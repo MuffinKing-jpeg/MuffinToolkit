@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 })
 export class ThemeServiceService {
 
+  current: 'dark' | 'light' = 'dark'
+
   constructor() {
     if (localStorage['theme'] === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       this.setDarkTheme()
@@ -26,11 +28,13 @@ export class ThemeServiceService {
   private setDarkTheme() {
     document.documentElement.classList.add('dark')
     localStorage.setItem('theme', 'dark')
+    this.current = 'dark'
   }
 
   private setLightTheme() {
     document.documentElement.classList.remove('dark')
     localStorage.setItem('theme', 'light')
+    this.current = 'light'
   }
 
 }

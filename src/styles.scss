@@ -7,15 +7,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer
-
-  /* You can add global styles to this file, and also import other style files */
-* {
-  transition: background-color var(--transition-main);
-}
-
+/* You can add global styles to this file, and also import other style files */
 i {
   transition: transform var(--transition-main);
+}
+
+body {
+  transition: background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
 }
 
 .input-common {
@@ -23,7 +21,18 @@ i {
 }
 
 .btn-common {
-  @apply rounded-roundEdge p-2 text-dark-secondary bg-sky-500 hover:bg-sky-400
+  @apply rounded-roundEdge p-2 text-dark-secondary bg-sky-500 hover:bg-sky-400;
+  transition: background-color var(--transition-main);
+}
+
+.btn-inline {
+  @apply rounded-roundEdge px-3 py-1 text-dark-secondary bg-sky-500 hover:bg-sky-400;
+  transition: background-color var(--transition-main);
+}
+
+.btn-link {
+  @apply text-sky-400 hover:text-sky-600 dark:hover:text-sky-200;
+  transition: color var(--transition-secondary);
 }
 
 input::-webkit-outer-spin-button,
