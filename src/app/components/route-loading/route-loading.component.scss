@@ -1,6 +1,11 @@
 .loading-pad {
-  transition: bottom 300ms, top 300ms;
+  transition: top 300ms;
 }
+
+div.hide {
+  top: -1rem !important;
+}
+
 
 .loading {
   bottom: -100%;
