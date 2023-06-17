@@ -1,0 +1,54 @@
+<div class="w-full my-2 max-w-screen-md mx-auto">
+  <h2 class="text-center font-bold text-3xl"><i class="{{icon}} mr-2"></i>{{title}}</h2>
+  <div class="w-full">
+    <form *ngIf="valuesForm" [formGroup]="valuesForm" class="flex flex-row flex-wrap">
+      <div class="form-cols">
+        <label for="startValue" i18n>List price</label>
+        <div class="flex">
+          <input [formControl]="valuesControls.startValue" class="input-common w-full rounded-r-none" id="startValue"
+                 name="Start price"
+                 type="number">
+          <button (click)="valuesControls.startValue.setValue(null,{emitEvent: false})"
+                  class="btn-common rounded-l-none">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <label for="endValue" i18n>Sale price</label>
+        <div class="flex">
+          <input
+            [formControl]="valuesControls.endValue" class="input-common w-full rounded-r-none" id="endValue"
+            name="Final price"
+            type="number">
+          <button (click)="valuesControls.endValue.setValue(null,{emitEvent: false})" class="btn-common rounded-l-none">
+            <i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+      </div>
+      <div class="form-cols">
+        <label for="percent" i18n>Percent <i class="fa-solid fa-percent"></i> </label>
+        <div class="flex">
+          <input
+            [formControl]="valuesControls.percent" class="input-common w-full rounded-r-none" id="percent"
+            name="Percent" type="number">
+          <button (click)="valuesControls.percent.setValue(null,{emitEvent: false})" class="btn-common rounded-l-none">
+            <i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <label for="absolute" i18n>Saved <i class="fa-solid fa-dollar-sign"></i></label>
+        <div class="flex">
+          <input
+            [formControl]="valuesControls.absoluteValue" class="input-common w-full rounded-r-none" id="absolute"
+            name="Absolute value"
+            type="number">
+          <button (click)="valuesControls.absoluteValue.setValue(null,{emitEvent: false})"
+                  class="btn-common rounded-l-none"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+      </div>
+    </form>
+    <div class="px-4">
+      <button (click)="valuesForm?.reset()" class="btn-common w-full my-2">(╯°□°）╯︵ ┻━┻</button>
+    </div>
+    <pre *ngIf="isDevMode">{{valuesForm?.value | json}}</pre>
+  </div>
+</div>
+

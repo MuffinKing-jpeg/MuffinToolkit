@@ -7,9 +7,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer
 
-/* You can add global styles to this file, and also import other style files */
-
+  /* You can add global styles to this file, and also import other style files */
 :root {
   font-family: 'Oxygen', sans-serif;
 }
@@ -30,4 +30,23 @@ h2 {
 
 i {
   transition: transform var(--transition-main);
+}
+
+
+.input-common {
+  @apply rounded-roundEdge text-light-secondary dark:text-dark-secondary bg-field-light dark:bg-field-dark border-0 ring-accent-300 ring-1 focus:ring-accent-500
+}
+
+.btn-common {
+  @apply rounded-roundEdge p-2  text-light-secondary dark:text-dark-secondary bg-accent-300 hover:bg-accent-500 ring-accent-300 ring-1
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

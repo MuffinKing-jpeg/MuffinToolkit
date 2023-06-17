@@ -40,20 +40,25 @@ module.exports = {
           200: "#5E081A",
           100: "#2F040D",
         },
-        "navbar": "#1E1F22",
-        "navbar-text": "#FFFFFF",
+        "dark-navbar": "#1E1F22",
+        "dark-navbar-text": "#FFFFFF",
+        "light-navbar": "#E3E5E8",
+        "light-navbar-text": "#060607",
         "dark-main": "#313338",
         "dark-secondary": "#FFFFFF",
         "light-main": "#F8F8FC",
-        "light-secondary": "#000000",
+        "light-secondary": "#060607",
+        "field-dark": "#383A40",
+        "field-light": "#EBEDEF"
       },
       spacing: {
         navbarClosed: '5rem',
         navbarOpened: '16rem',
+        navbarClosedMobile: '2.5rem'
       },
       borderRadius: {
         roundEdge: 'var(--sizes-border-main)'
-      }
+      },
     },
   },
 
