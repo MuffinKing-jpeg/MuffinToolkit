@@ -1,7 +1,7 @@
 import {valuesControls} from "../form.controls";
 
 export function startEnd(start: number, end: number) {
-  const absolute = end - start
+  const absolute = (end - start) * (-1)
   const percent = +((start - end) / start * 100).toPrecision(6)
 
   valuesControls.absoluteValue.setValue(absolute, {emitEvent: false})
@@ -18,7 +18,7 @@ export function startAbsolute(start: number, absolute: number) {
 export function startPercent(start: number, percent: number) {
 
   const end = +(start - (percent / 100) * start).toPrecision(6)
-  const absolute = end - start
+  const absolute = (end - start) * (-1)
   valuesControls.absoluteValue.setValue(absolute, {emitEvent: false})
   valuesControls.endValue.setValue(end, {emitEvent: false})
 }
@@ -32,7 +32,7 @@ export function endAbsolute(end: number, absolute: number) {
 
 export function endPercent(end: number, percent: number) {
   const start = +(end / (1 - (percent / 100))).toPrecision(6)
-  const absolute = end - start
+  const absolute = (end - start) * (-1)
   valuesControls.absoluteValue.setValue(absolute, {emitEvent: false})
   valuesControls.startValue.setValue(start, {emitEvent: false})
 }
