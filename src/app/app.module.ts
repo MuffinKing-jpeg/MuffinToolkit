@@ -8,6 +8,7 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {LocaleSelectorComponent} from './components/locale-selector/locale-selector.component';
 import {ThemeBtnComponent} from './components/theme-btn/theme-btn.component';
+import { RouteLoadingComponent } from './components/route-loading/route-loading.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {ThemeBtnComponent} from './components/theme-btn/theme-btn.component';
     NavbarComponent,
     LocaleSelectorComponent,
     ThemeBtnComponent,
+    RouteLoadingComponent,
   ],
   imports: [
     BrowserModule,
