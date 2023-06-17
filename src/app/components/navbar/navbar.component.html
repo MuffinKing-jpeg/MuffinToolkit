@@ -28,15 +28,15 @@
 flex
 flex-col">
 
-    <a class="whitespace-nowrap text-accent-470 mt-2" routerLink="/">
+    <a class="whitespace-nowrap text-sky-400 mt-2" routerLink="/">
       <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
       <h2 class="ml-5 inline text-3xl">{{title}}</h2>
     </a>
     <ul class="flex flex-col gap-1.5 mt-2 mb-auto overflow-clip">
       <li *ngFor="let item of modulesManifest">
-        <a class="whitespace-nowrap p-1 bg-accent-300 h-14 block rounded-roundEdge hover:bg-accent-400"
-           routerLink="{{item.path}}" routerLinkActive="bg-accent-500">
-          <span class="w-12 inline-flex justify-center align-middle">
+        <a class="whitespace-nowrap h-14 block btn-common"
+           routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
+          <span class="w-10 inline-flex justify-center align-middle">
             <i class="{{item.data?.['icon']}} text-4xl m-auto"></i>
           </span>
           <h3 class="inline-flex align-middle ml-6 h-full pr-1">
