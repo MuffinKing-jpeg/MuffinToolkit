@@ -38,7 +38,7 @@ i {
 }
 
 .btn-common {
-  @apply rounded-roundEdge p-2  text-light-secondary dark:text-dark-secondary bg-accent-300 hover:bg-accent-500 ring-accent-300 ring-1
+  @apply rounded-roundEdge p-2 text-dark-secondary bg-accent-300 hover:bg-accent-500 ring-accent-300 ring-1
 }
 
 input::-webkit-outer-spin-button,
