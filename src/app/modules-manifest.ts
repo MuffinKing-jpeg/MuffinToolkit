@@ -6,7 +6,8 @@ export const modulesManifest: Routes = [
     path: 'discounter',
     loadChildren: () => import('./modules/discounter/discounter.module').then(m => m.DiscounterModule),
     data: {
-      icon: 'fa-solid fa-percent'
+      icon: 'fa-solid fa-percent',
+      title: $localize`Discount calculator`
     }
   }
 ]

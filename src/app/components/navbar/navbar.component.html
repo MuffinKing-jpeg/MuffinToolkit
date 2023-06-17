@@ -16,24 +16,26 @@
        class="navbar-wrapper
        h-full
        overflow-clip
-       bg-navbar
+       bg-light-navbar
+       dark:bg-dark-navbar
+       text-dark-navbar-text
        p-3
-       text-navbar-text
        sm:w-navbarClosed
        sm:hover:w-navbarOpened
        2xl:w-navbarOpened
        relative
+       font-bold
 flex
 flex-col">
 
-    <a class="whitespace-nowrap text-accent-470" routerLink="/">
+    <a class="whitespace-nowrap text-accent-470 mt-2" routerLink="/">
       <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
       <h2 class="ml-5 inline text-3xl">{{title}}</h2>
     </a>
     <ul class="flex flex-col gap-1.5 mt-2 mb-auto overflow-clip">
       <li *ngFor="let item of modulesManifest">
-        <a class="whitespace-nowrap p-1 bg-accent-200 h-14 block rounded-roundEdge hover:bg-accent-300"
-           routerLink="{{item.path}}" routerLinkActive="bg-accent-470">
+        <a class="whitespace-nowrap p-1 bg-accent-300 h-14 block rounded-roundEdge hover:bg-accent-400"
+           routerLink="{{item.path}}" routerLinkActive="bg-accent-500">
           <span class="w-12 inline-flex justify-center align-middle">
             <i class="{{item.data?.['icon']}} text-4xl m-auto"></i>
           </span>
@@ -50,7 +52,7 @@ flex-col">
        [ngClass]="{
        'rounded-t-2xl': !toggleNav
        }"
-       class=" navbar-btn
+       class="navbar-btn
        bottom-full
         w-full
         left-0
@@ -59,7 +61,8 @@ flex-col">
         p-4
         flex
         rounded-t-2xl
-        bg-navbar
+        bg-light-navbar
+        dark:bg-dark-navbar
         h-10">
     <i [ngClass]="{
     'fa-rotate-180': toggleNav

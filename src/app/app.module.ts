@@ -3,11 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LocaleSelectorComponent } from './components/locale-selector/locale-selector.component';
-import { ThemeBtnComponent } from './components/theme-btn/theme-btn.component';
+import {WelcomePageComponent} from './components/welcome-page/welcome-page.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {LocaleSelectorComponent} from './components/locale-selector/locale-selector.component';
+import {ThemeBtnComponent} from './components/theme-btn/theme-btn.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { ThemeBtnComponent } from './components/theme-btn/theme-btn.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
