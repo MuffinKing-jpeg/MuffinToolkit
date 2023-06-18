@@ -12,7 +12,8 @@ i {
   transition: transform var(--transition-main);
 }
 
-body {
+body,
+.navbar {
   transition: background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
 }
 

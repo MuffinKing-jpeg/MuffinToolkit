@@ -7,12 +7,12 @@ nav.open {
   transition: backdrop-filter var(--transition-main), top var(--transition-main);
 
   &-wrapper {
-    transition: width var(--transition-main);
+    transition: width var(--transition-main), background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
   }
 }
 
 .navbar-btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  transition: border-top-left-radius var(--transition-secondary), border-top-right-radius, var(--transition-secondary);
+  transition: border-top-left-radius var(--transition-secondary), border-top-right-radius var(--transition-secondary), background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
 }
