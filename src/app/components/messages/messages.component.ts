@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MessagingService} from '../../services/messaging/messaging.service';
 import {MessageInterface} from '../../../interfaces/message.interface';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-messages',
@@ -27,23 +28,25 @@ export class MessagesComponent implements OnInit {
         }
       }
     })
-    // this.messaging.sendMessage({
-    //   type: 'info',
-    //   heading: '¯\\_(ツ)_/¯',
-    //   msg: 'Some random info'
-    // })
-    // this.messaging.sendMessage({
-    //   type: 'warn',
-    //   heading: '(•_•)',
-    //   msg: 'Some random warning'
-    // })
-    // setTimeout(() => {
-    //   this.messaging.sendMessage({
-    //     type: 'error',
-    //     heading: '(╯°□°）╯︵ ┻━┻',
-    //     msg: 'Some random ERROR'
-    //   })
-    // }, 2000)
 
+    if (environment.isDev) {
+      this.messaging.sendMessage({
+        type: 'info',
+        heading: '¯\\_(ツ)_/¯',
+        msg: 'Some random info'
+      })
+      this.messaging.sendMessage({
+        type: 'warn',
+        heading: '(•_•)',
+        msg: 'Some random warning'
+      })
+      setTimeout(() => {
+        this.messaging.sendMessage({
+          type: 'error',
+          heading: '(╯°□°）╯︵ ┻━┻',
+          msg: 'Some random ERROR'
+        })
+      }, 2000)
+    }
   }
 }

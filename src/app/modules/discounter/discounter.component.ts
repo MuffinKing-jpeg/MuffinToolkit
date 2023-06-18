@@ -8,6 +8,7 @@ import {fromEnd} from "./calculators/fromEnd";
 import {fromPercent} from "./calculators/fromPercent";
 import {fromAbsolute} from "./calculators/fromAbsolute";
 import {environment} from "../../../environments/environment";
+import {MessagingService} from "../../services/messaging/messaging.service";
 
 const inputDebounce = 350
 
@@ -28,7 +29,7 @@ export class DiscounterComponent implements OnInit, OnDestroy {
   valuesControls = valuesControls;
   protected readonly isDevMode = environment.isDev;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private message: MessagingService) {
   }
 
   ngOnInit() {
@@ -38,7 +39,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
         this.icon = v?.['icon']
       },
       error: err => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
         this.title = $localize`Disaster! Something broke! Look in THE console!`
       }
     })
@@ -56,7 +61,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromStart(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.endChange = valuesControls.endValue.valueChanges.pipe(
@@ -64,7 +73,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromEnd(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.percentChange = valuesControls.percent.valueChanges.pipe(
@@ -72,7 +85,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromPercent(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.absoluteChange = valuesControls.absoluteValue.valueChanges.pipe(
@@ -80,7 +97,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromAbsolute(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
   }
