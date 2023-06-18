@@ -35,6 +35,22 @@ body {
   transition: color var(--transition-secondary);
 }
 
+.card {
+  @apply p-2 rounded-roundEdge m-2
+}
+
+.card-warn {
+  @apply bg-amber-300 text-black
+}
+
+.card-info {
+  @apply bg-sky-200 text-black
+}
+
+.card-error {
+  @apply bg-rose-400 text-black
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
