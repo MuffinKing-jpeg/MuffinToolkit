@@ -1,6 +1,6 @@
-import {Routes} from '@angular/router';
+import {ModulesRoutes} from "../interfaces/modulesRoutes.interface";
 
-export const modulesManifest: Routes = [
+export const modulesManifest: ModulesRoutes = [
   {
     title: $localize`Discount calculator`,
     path: 'discounter',
