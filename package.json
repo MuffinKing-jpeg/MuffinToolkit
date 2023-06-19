@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --localize",
+    "build-dev": "ng build --configuration development --localize",
     "watch": "ng build --watch --configuration development --localize",
     "test": "ng test",
     "translate-uk": "xlf2xlf -i src/locale/source/messages.xlf -o src/locale/translated/uk/messages.xlf -f en -t uk -c 1",
