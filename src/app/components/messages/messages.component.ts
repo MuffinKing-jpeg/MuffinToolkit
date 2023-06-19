@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {MessagingService} from '../../services/messaging/messaging.service';
 import {MessageInterface} from '../../../interfaces/message.interface';
 import {environment} from "../../../environments/environment";
@@ -9,8 +9,12 @@ import {environment} from "../../../environments/environment";
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-
   messages: MessageInterface[] = []
+
+  private lifeTime = 6000
+  @HostBinding("style.--msg-life-time")
+  private lifeTimeStr = this.lifeTime + 'ms'
+
 
   constructor(private messaging: MessagingService) {
 
@@ -24,7 +28,7 @@ export class MessagesComponent implements OnInit {
           const timer = setTimeout(() => {
             this.messages.shift()
             clearTimeout(timer)
-          }, 5000)
+          }, this.lifeTime)
         }
       }
     })

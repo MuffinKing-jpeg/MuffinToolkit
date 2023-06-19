@@ -1,0 +1,25 @@
+.card-msg {
+  animation: spawn ease-in-out var(--msg-life-time);
+}
+
+@keyframes spawn {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(-10%);
+  }
+  15% {
+    transform: translateX(5%);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+
+}

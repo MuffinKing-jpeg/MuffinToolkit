@@ -1,10 +1,10 @@
-<div class="right-0 w-full sm:w-navbarOpened sm:bottom-0 sm:top-auto fixed text-sm">
-  <ul>
+<div class="right-0 w-full  sm:w-navbarOpened sm:bottom-0 sm:top-auto fixed text-sm">
+  <ul class="flex flex-col-reverse sm:flex-col">
     <li *ngFor="let item of messages;index as i" [ngClass]="{
     'card-info': item.type === 'info',
     'card-warn': item.type === 'warn',
     'card-error': item.type === 'error',
-    }" class="card flex align-middle">
+    }" class="card flex align-middle card-msg" style="">
       <div>
         <h5>{{item.heading}}</h5>
         <p>{{item.msg}}</p>
