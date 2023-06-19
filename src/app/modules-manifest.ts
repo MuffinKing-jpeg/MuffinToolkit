@@ -1,4 +1,4 @@
-import {ModulesRoutes} from "../interfaces/modulesRoutes.interface";
+import {ModulesRoutes} from '../interfaces/modulesRoutes.interface';
 
 export const modulesManifest: ModulesRoutes = [
   {
@@ -9,5 +9,14 @@ export const modulesManifest: ModulesRoutes = [
       icon: 'fa-solid fa-percent',
       title: $localize`Discount calculator`
     }
-  }
+  },
+  {
+    title: $localize`Randomizer`,
+    path: 'random',
+    loadChildren: () => import('./modules/random/random.module').then(m => m.RandomModule),
+    data: {
+      icon: 'fa-solid fa-shuffle',
+      title: $localize`Randomizer`
+    }
+  },
 ]

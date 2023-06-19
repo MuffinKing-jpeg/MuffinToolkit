@@ -3,12 +3,14 @@ import {ActivatedRoute} from '@angular/router';
 import {debounce, interval, Subscription} from 'rxjs';
 import {FormGroup} from '@angular/forms';
 import {valuesControls} from './form.controls';
-import {fromStart} from "./calculators/fromStart";
-import {fromEnd} from "./calculators/fromEnd";
-import {fromPercent} from "./calculators/fromPercent";
-import {fromAbsolute} from "./calculators/fromAbsolute";
-import {environment} from "../../../environments/environment";
-import {MessagingService} from "../../services/messaging/messaging.service";
+import {fromStart} from './calculators/fromStart';
+import {fromEnd} from './calculators/fromEnd';
+import {fromPercent} from './calculators/fromPercent';
+import {fromAbsolute} from './calculators/fromAbsolute';
+import {environment} from '../../../environments/environment';
+import {MessagingService} from '../../services/messaging/messaging.service';
+import {dataSubscription} from '../../shared/dataSubscription';
+import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
 
 const inputDebounce = 350
 
@@ -17,7 +19,7 @@ const inputDebounce = 350
   templateUrl: './discounter.component.html',
   styleUrls: ['./discounter.component.scss']
 })
-export class DiscounterComponent implements OnInit, OnDestroy {
+export class DiscounterComponent implements OnInit, OnDestroy, ToolsComponentInterface {
   dataSubscription?: Subscription
   startChange?: Subscription
   endChange?: Subscription
@@ -33,20 +35,7 @@ export class DiscounterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.dataSubscription = this.route.data.subscribe({
-      next: v => {
-        this.title = v?.['title']
-        this.icon = v?.['icon']
-      },
-      error: err => {
-        this.message.sendMessage({
-          type: 'error',
-          msg: err.message,
-          heading: err.name
-        })
-        this.title = $localize`Disaster! Something broke! Look in THE console!`
-      }
-    })
+    this.dataSubscription = dataSubscription(this, this.route, this.message)
     this.valuesForm = new FormGroup({
       ...valuesControls
     })

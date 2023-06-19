@@ -6,7 +6,7 @@
   </p>
   <h3 class="text-2xl my-2">Available tools:</h3>
   <ul class="mt-1 mb-12">
-    <li *ngFor="let item of modulesManifest" class="my-1">
+    <li *ngFor="let item of modulesManifest" class="mb-3 mt-2">
       <a class="btn-inline" routerLink="{{item.path}}">
         <i class="{{item.data.icon}}"></i><span class="ml-2">{{item.title}}</span>
       </a>

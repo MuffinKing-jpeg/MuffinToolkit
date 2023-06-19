@@ -31,7 +31,7 @@ flex-col">
       <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
       <h2 class="ml-5 inline text-3xl">{{title}}</h2>
     </a>
-    <ul class="flex flex-col gap-1.5 mt-2 mb-auto overflow-clip">
+    <ul class="flex flex-col gap-4 mt-2 mb-auto overflow-x-clip">
       <li *ngFor="let item of modulesManifest">
         <a class="whitespace-nowrap h-14 block btn-common"
            routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
