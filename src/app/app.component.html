@@ -2,12 +2,17 @@
 <app-route-loading></app-route-loading>
 <app-messages></app-messages>
 <main
-  class="my-4
+  class="py-4
+  min-h-screen
   px-4
+  flex
    mb-navbarClosedMobile
    sm:mb-0
    sm:mx-20
    2xl:mx-navbarOpened">
-  <router-outlet></router-outlet>
+  <div class="mx-auto min-h-full">
+    <router-outlet></router-outlet>
+  </div>
+
 </main>
 
