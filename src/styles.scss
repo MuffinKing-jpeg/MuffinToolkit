@@ -52,6 +52,10 @@ body,
   @apply bg-rose-400 text-black
 }
 
+.container-page {
+  @apply flex  my-4 flex-col py-2 w-full mx-auto pb-navbarClosedMobile
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
