@@ -1,7 +1,7 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {MessagingService} from '../../services/messaging/messaging.service';
 import {MessageInterface} from '../../../interfaces/message.interface';
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-messages',
@@ -12,7 +12,7 @@ export class MessagesComponent implements OnInit {
   messages: MessageInterface[] = []
 
   private lifeTime = 6000
-  @HostBinding("style.--msg-life-time")
+  @HostBinding('style.--msg-life-time')
   private lifeTimeStr = this.lifeTime + 'ms'
 
 
@@ -23,13 +23,11 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     this.messaging.msgFlow?.subscribe({
       next: (v) => {
-        if (v.type != 'debug') {
-          this.messages.push(v)
-          const timer = setTimeout(() => {
-            this.messages.shift()
-            clearTimeout(timer)
-          }, this.lifeTime)
-        }
+        this.messages.push(v)
+        const timer = setTimeout(() => {
+          this.messages.shift()
+          clearTimeout(timer)
+        }, this.lifeTime)
       }
     })
 

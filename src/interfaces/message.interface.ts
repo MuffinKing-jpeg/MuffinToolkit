@@ -1,5 +1,5 @@
 export interface MessageInterface {
-  type: 'info' | 'warn' | 'error' | 'debug'
+  type: 'info' | 'warn' | 'error'
   heading: string
   msg?: string
 }

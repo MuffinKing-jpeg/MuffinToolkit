@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {MessageInterface} from '../../../interfaces/message.interface';
-import {BehaviorSubject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagingService {
 
-  public msgFlow: BehaviorSubject<MessageInterface> = new BehaviorSubject<MessageInterface>({
-    type: 'debug',
-    heading: 'Messaging service started'
-  })
+  public msgFlow: Subject<MessageInterface> = new Subject<MessageInterface>()
 
   public sendMessage(msgData: MessageInterface) {
     switch (msgData.type) {
@@ -22,9 +19,6 @@ export class MessagingService {
         break
       case 'warn':
         console.warn(msgData.heading, msgData.msg)
-        break
-      case 'debug':
-        console.log(msgData.heading, msgData.msg)
         break
     }
     this.msgFlow.next(msgData)
