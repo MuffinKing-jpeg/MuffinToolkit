@@ -1,3 +1,7 @@
+.messages-container {
+  z-index: 9999;
+}
+
 .card-msg {
   animation: spawn ease-in-out var(--msg-life-time);
 }

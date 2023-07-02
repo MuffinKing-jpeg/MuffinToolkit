@@ -1,6 +1,6 @@
-import {ToolsComponentInterface} from '../../interfaces/toolsComponent.interface';
+import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
 import {ActivatedRoute} from '@angular/router';
-import {MessagingService} from '../services/messaging/messaging.service';
+import {MessagingService} from '../../services/messaging/messaging.service';
 
 export function dataSubscription(component: ToolsComponentInterface, route: ActivatedRoute, message: MessagingService) {
   return route.data.subscribe({

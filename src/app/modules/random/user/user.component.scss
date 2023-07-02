@@ -1,0 +1,10 @@
+.users-table-row {
+  &:nth-child(even) {
+    @apply bg-opacity-20 dark:bg-opacity-30 dark:bg-sky-600 bg-sky-100;
+  }
+
+  &:nth-child(odd) {
+    @apply bg-opacity-20 dark:bg-opacity-30 dark:bg-sky-800 bg-sky-300 ;
+  }
+}
+

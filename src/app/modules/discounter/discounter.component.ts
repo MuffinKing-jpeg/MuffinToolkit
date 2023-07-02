@@ -9,7 +9,7 @@ import {fromPercent} from './calculators/fromPercent';
 import {fromAbsolute} from './calculators/fromAbsolute';
 import {environment} from '../../../environments/environment';
 import {MessagingService} from '../../services/messaging/messaging.service';
-import {dataSubscription} from '../../shared/dataSubscription';
+import {dataSubscription} from '../../shared/functions/dataSubscription';
 import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
 
 const inputDebounce = 350

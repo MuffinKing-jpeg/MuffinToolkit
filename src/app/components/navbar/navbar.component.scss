@@ -5,6 +5,7 @@ nav.open {
 
 .navbar {
   transition: backdrop-filter var(--transition-main), top var(--transition-main);
+  z-index: 99999 !important;
 
   &-wrapper {
     transition: width var(--transition-main), background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);

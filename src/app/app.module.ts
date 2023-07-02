@@ -8,8 +8,9 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {LocaleSelectorComponent} from './components/locale-selector/locale-selector.component';
 import {ThemeBtnComponent} from './components/theme-btn/theme-btn.component';
-import { RouteLoadingComponent } from './components/route-loading/route-loading.component';
-import { MessagesComponent } from './components/messages/messages.component';
+import {RouteLoadingComponent} from './components/route-loading/route-loading.component';
+import {MessagesComponent} from './components/messages/messages.component';
+import {NgScrollbar} from "ngx-scrollbar";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MessagesComponent } from './components/messages/messages.component';
     MessagesComponent,
   ],
   imports: [
+    NgScrollbar,
     BrowserModule,
     AppRoutingModule
   ],

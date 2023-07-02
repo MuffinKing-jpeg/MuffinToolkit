@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MessagingService} from '../../services/messaging/messaging.service';
 import {Subscription} from 'rxjs';
-import {dataSubscription} from '../../shared/dataSubscription';
+import {dataSubscription} from '../../shared/functions/dataSubscription';
 import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
 
 @Component({
