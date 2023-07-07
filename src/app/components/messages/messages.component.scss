@@ -8,7 +8,11 @@
 
 @keyframes spawn {
   0% {
+    display: none;
     transform: translateX(100%);
+  }
+  1% {
+    display: block;
   }
   10% {
     transform: translateX(-10%);
@@ -22,8 +26,13 @@
   90% {
     transform: translateX(0);
   }
+  99% {
+
+    display: block;
+  }
   100% {
     transform: translateX(100%);
+    display: none;
   }
 
 }

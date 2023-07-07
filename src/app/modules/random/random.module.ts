@@ -7,6 +7,7 @@ import {UserComponent} from './user/user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ToggleModule} from '../../shared/components/forms/toggle/toggle.module';
 import {NgScrollbar} from "ngx-scrollbar";
+import {randomChildren} from "./randomModulesManifest";
 
 const routes: Routes = [
   {
@@ -16,12 +17,9 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'user'
+        redirectTo: randomChildren[0].path
       },
-      {
-        path: 'user',
-        component: UserComponent
-      }
+      ...randomChildren
     ]
   }
 ]

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {atLeastOne} from '../../../shared/validators/atLeastOne';
 import {ToggleBtnComponent} from '../../../shared/components/forms/toggle/toggle-btn.component';
@@ -9,13 +9,21 @@ import {RandomUsersTableInterface, UsersTableBodyInterface} from '../../../../in
 import {environment} from '../../../../environments/environment';
 import {Faker, Sex} from '@faker-js/faker';
 import {writeContents} from "../../../shared/functions/fileWriter";
+import {Subscription} from "rxjs";
+import {ToolsComponentInterface} from "../../../../interfaces/toolsComponent.interface";
+import {dataSubscription} from '../../../shared/functions/dataSubscription'
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
+export class UserComponent implements OnInit, OnDestroy, ToolsComponentInterface {
+
+  dataSubscription?: Subscription
+  title?: string
+  icon?: string
 
   usersTable: RandomUsersTableInterface = {
     heading: [],
@@ -39,7 +47,7 @@ export class UserComponent {
   protected readonly environment = environment;
   protected readonly Object = Object;
 
-  constructor(private messages: MessagingService, private loading: LoadingService) {
+  constructor(private message: MessagingService, private loading: LoadingService, private route: ActivatedRoute) {
   }
 
   generateUsers() {
@@ -50,7 +58,7 @@ export class UserComponent {
       this.fillHeading()
       this.fillBody(faker.faker)
       this.loading.isLoading.next(false)
-    }).catch(err => this.messages.sendMessage({
+    }).catch(err => this.message.sendMessage({
       heading: err,
       msg: err.message,
       type: 'error'
@@ -68,18 +76,18 @@ export class UserComponent {
         const EXCEL_EXTENSION = '.xlsx';
         writeContents(excelBuffer, 'random_users', EXEL_TYPE, EXCEL_EXTENSION)
         this.loading.isLoading.next(false)
-        this.messages.sendMessage({
+        this.message.sendMessage({
           heading: 'Exported:',
           msg: `Exported to .XLSX`,
           type: 'info'
         })
       } else {
-        this.messages.sendMessage({
+        this.message.sendMessage({
           heading: 'No data to export',
           type: 'info'
         })
       }
-    }).catch((err) => this.messages.sendMessage({
+    }).catch((err) => this.message.sendMessage({
       heading: err.message,
       type: 'error'
     }))
@@ -95,13 +103,13 @@ export class UserComponent {
       })
       writeContents(blob, 'random_users', JSON_TYPE, JSON_EXTENSION)
       this.loading.isLoading.next(false)
-      this.messages.sendMessage({
+      this.message.sendMessage({
         heading: 'Exported:',
         msg: `Exported to JSON`,
         type: 'info'
       })
     } else {
-      this.messages.sendMessage({
+      this.message.sendMessage({
         heading: 'No data to export',
         type: 'info'
       })
@@ -135,5 +143,13 @@ export class UserComponent {
     if (settingsGroup.number.value) this.usersTable.heading.push($localize`Number`)
     if (settingsGroup.email.value) this.usersTable.heading.push($localize`Email`)
     if (settingsGroup.uuid.value) this.usersTable.heading.push($localize`UUID`)
+  }
+
+  ngOnInit() {
+    this.dataSubscription = dataSubscription(this, this.route, this.message)
+  }
+
+  ngOnDestroy() {
+    this.dataSubscription?.unsubscribe()
   }
 }

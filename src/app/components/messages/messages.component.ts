@@ -10,11 +10,11 @@ import {environment} from '../../../environments/environment';
 })
 export class MessagesComponent implements OnInit {
   messages: MessageInterface[] = []
-
+  timers: any[] = []
+  protected readonly clearTimeout = clearTimeout;
   private lifeTime = 6000
   @HostBinding('style.--msg-life-time')
   private lifeTimeStr = this.lifeTime + 'ms'
-
 
   constructor(private messaging: MessagingService) {
 
@@ -24,10 +24,10 @@ export class MessagesComponent implements OnInit {
     this.messaging.msgFlow?.subscribe({
       next: (v) => {
         this.messages.push(v)
-        const timer = setTimeout(() => {
+        this.timers.push(setTimeout(() => {
           this.messages.shift()
-          clearTimeout(timer)
-        }, this.lifeTime)
+          clearTimeout(this.timers[0])
+        }, this.lifeTime))
       }
     })
 

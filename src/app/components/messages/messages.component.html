@@ -9,7 +9,7 @@
         <p class="font-bold">{{item.heading}}</p>
         <p class="text-sm">{{item.msg}}</p>
       </div>
-      <button (click)="messages.splice(i,1)"
+      <button (click)="messages.splice(i,1); clearTimeout(timers[i])"
               class="ml-auto py-2 pr-2 pl-3 h-fit mb-auto text-lg"><i
         class="fa-solid fa-xmark"></i></button>
     </li>

@@ -17,3 +17,7 @@ nav.open {
   border-top-right-radius: 0;
   transition: border-top-left-radius var(--transition-secondary), border-top-right-radius var(--transition-secondary), background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
 }
+
+.ng-scroll-content {
+  display: block !important;
+}

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
-import {MessagingService} from "./messaging/messaging.service";
+import {MessagingService} from "../messaging/messaging.service";
 
 @Injectable({
   providedIn: 'root'

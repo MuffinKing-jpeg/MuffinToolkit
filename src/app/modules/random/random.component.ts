@@ -4,6 +4,7 @@ import {MessagingService} from '../../services/messaging/messaging.service';
 import {Subscription} from 'rxjs';
 import {dataSubscription} from '../../shared/functions/dataSubscription';
 import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
+import {randomChildren} from "./randomModulesManifest";
 
 @Component({
   selector: 'app-random',
@@ -14,6 +15,7 @@ export class RandomComponent implements OnInit, OnDestroy, ToolsComponentInterfa
   dataSubscription?: Subscription
   title?: string
   icon?: string
+  protected readonly randomChildren = randomChildren;
 
   constructor(private route: ActivatedRoute, private message: MessagingService) {
   }

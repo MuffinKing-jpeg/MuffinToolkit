@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LoadingService} from "../../services/loading.service";
+import {LoadingService} from "../../services/loading/loading.service";
 import {MessagingService} from "../../services/messaging/messaging.service";
 
 @Component({
