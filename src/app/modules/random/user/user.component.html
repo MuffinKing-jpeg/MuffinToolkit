@@ -47,12 +47,13 @@
 
 
     <div *ngIf="usersTable.heading.length > 0" class="flex justify-between xs:flex-row flex-col">
-      <h4 class="mt-auto" i18n>Your<b>FAKE</b>users:</h4>
+      <h4 class="mt-auto" i18n>Your <b>FAKE</b> users:</h4>
       <div class="mt-auto" i18n>
         <span class="inline-flex gap-2">
-          <span class="btn-inline">CSV</span>
-          <span class="btn-inline bg-amber-400">JSON</span>
-          <span class="btn-inline bg-emerald-500">XLSX</span>
+          <button (click)="saveJSON()" class="btn-inline bg-amber-400"><i
+            class="fa-solid fa-download mr-2"></i>.JSON</button>
+          <button (click)="saveXLSX()" class="btn-inline bg-emerald-500"><i
+            class="fa-solid fa-download mr-2"></i>.XLSX</button>
         </span>
       </div>
     </div>
@@ -61,7 +62,7 @@
     <ng-scrollbar *ngIf="usersTable.heading.length > 0" autoHeightDisabled="false"
                   class="scrollbar" track="horizontal">
       <div class="py-4">
-        <table #resultTable class="users-table w-full border-spacing-x-1 border-separate whitespace-nowrap">
+        <table class="users-table w-full border-spacing-x-1 border-separate whitespace-nowrap">
           <thead>
           <tr>
             <th *ngFor="let item of usersTable.heading"

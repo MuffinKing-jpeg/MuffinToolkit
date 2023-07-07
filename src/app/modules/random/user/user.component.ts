@@ -4,10 +4,11 @@ import {atLeastOne} from '../../../shared/validators/atLeastOne';
 import {ToggleBtnComponent} from '../../../shared/components/forms/toggle/toggle-btn.component';
 import {FieldsList} from './settings';
 import {MessagingService} from '../../../services/messaging/messaging.service';
-import {LoadingService} from '../../../services/loading.service';
+import {LoadingService} from '../../../services/loading/loading.service';
 import {RandomUsersTableInterface, UsersTableBodyInterface} from '../../../../interfaces/randomUsersTable.interface';
 import {environment} from '../../../../environments/environment';
-import {Faker} from '@faker-js/faker';
+import {Faker, Sex} from '@faker-js/faker';
+import {writeContents} from "../../../shared/functions/fileWriter";
 
 @Component({
   selector: 'app-user',
@@ -21,9 +22,8 @@ export class UserComponent {
     body: []
   }
 
-
   configForm = new FormGroup({
-    amount: new FormControl(1, [
+    amount: new FormControl(10, [
       Validators.required
     ]),
     settings: new FormGroup({
@@ -57,13 +57,67 @@ export class UserComponent {
     }))
   }
 
+  saveXLSX() {
+    this.loading.isLoading.next(true)
+    import('xlsx').then((xlsx) => {
+      if (this.usersTable.body) {
+        const worksheet = xlsx.utils.json_to_sheet(this.usersTable.body);
+        const workbook = {Sheets: {data: worksheet}, SheetNames: ['data']};
+        const excelBuffer: Blob = xlsx.write(workbook, {bookType: 'xlsx', type: 'array'});
+        const EXEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+        const EXCEL_EXTENSION = '.xlsx';
+        writeContents(excelBuffer, 'random_users', EXEL_TYPE, EXCEL_EXTENSION)
+        this.loading.isLoading.next(false)
+        this.messages.sendMessage({
+          heading: 'Exported:',
+          msg: `Exported to .XLSX`,
+          type: 'info'
+        })
+      } else {
+        this.messages.sendMessage({
+          heading: 'No data to export',
+          type: 'info'
+        })
+      }
+    }).catch((err) => this.messages.sendMessage({
+      heading: err.message,
+      type: 'error'
+    }))
+  }
+
+  saveJSON() {
+    if (this.usersTable.body) {
+      this.loading.isLoading.next(true)
+      const JSON_TYPE = 'application/json;charset=UTF-8'
+      const JSON_EXTENSION = '.json'
+      const blob = new Blob([new TextEncoder().encode(JSON.stringify(this.usersTable.body, null, 4))], {
+        type: "application/json;charset=utf-8"
+      })
+      writeContents(blob, 'random_users', JSON_TYPE, JSON_EXTENSION)
+      this.loading.isLoading.next(false)
+      this.messages.sendMessage({
+        heading: 'Exported:',
+        msg: `Exported to JSON`,
+        type: 'info'
+      })
+    } else {
+      this.messages.sendMessage({
+        heading: 'No data to export',
+        type: 'info'
+      })
+    }
+
+  }
+
+
   fillBody(fakeGen: Faker) {
     const length = this.configForm.controls.amount.value ? this.configForm.controls.amount.value : 0
     const settingsGroup = this.configForm.controls.settings.controls
     for (let i = 0; i < length; i++) {
       const user: UsersTableBodyInterface = {}
-      if (settingsGroup.firstName.value) user.firstName = fakeGen.person.firstName()
-      if (settingsGroup.lastName.value) user.lastName = fakeGen.person.lastName()
+      const userSex = fakeGen.person.sex() as Sex
+      if (settingsGroup.firstName.value) user.firstName = fakeGen.person.firstName(userSex)
+      if (settingsGroup.lastName.value) user.lastName = fakeGen.person.lastName(userSex)
       if (settingsGroup.number.value) user.number = fakeGen.phone.number('(###) ###-##-##')
       if (settingsGroup.email.value) user.email = fakeGen.internet.email({
         firstName: user.firstName,
