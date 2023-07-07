@@ -11,4 +11,6 @@ Set of random tools. Made by [MuffinKing-jpeg](https://github.com/MuffinKing-jpe
 ## Available tools:
 
 - Discount calculator
+- Randomizer
+  - Random users generator
 - ***Under construction***
