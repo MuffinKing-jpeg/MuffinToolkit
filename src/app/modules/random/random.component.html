@@ -1,0 +1,14 @@
+<div class="container-page max-w-screen-2xl">
+  <h2 class="text-center font-bold text-3xl"><i class="{{icon}} mr-2"></i>{{title}}</h2>
+  <div class="w-full">
+    <ul class="flex justify-center my-2 gap-4">
+      <li *ngFor="let item of randomChildren"><a class="py-1 px-3 inline rounded-roundEdge " routerLink="{{item.path}}"
+                                                 routerLinkActive="bg-sky-500">
+        <i class="{{item.data.icon}} mr-1.5"></i><span>{{item.data.title}}</span>
+      </a></li>
+    </ul>
+  </div>
+  <div class="w-full">
+    <router-outlet></router-outlet>
+  </div>
+</div>

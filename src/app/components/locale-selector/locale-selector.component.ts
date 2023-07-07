@@ -18,7 +18,6 @@ export class LocaleSelectorComponent implements OnInit {
   protected readonly environment = environment;
 
   ngOnInit() {
-    console.log()
     this.activeLang = this.globalPath.match(pathRegEx)?.[0].replace('/', '')
   }
 }

@@ -13,8 +13,7 @@
      3xl:block">
   <div (mouseenter)="window.document.body.offsetWidth <= 1536 && (toggleNav = true)"
        (mouseleave)=" window.document.body.offsetWidth <= 1536 && window.document.body.offsetWidth >= 640  && (toggleNav = false)"
-       class="navbar-wrapper
-       h-full
+       class="navbar-wrapper h-full
        overflow-clip
        bg-light-navbar
        dark:bg-dark-navbar
@@ -32,19 +31,22 @@ flex-col">
       <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
       <h2 class="ml-5 inline text-3xl">{{title}}</h2>
     </a>
-    <ul class="flex flex-col gap-1.5 mt-2 mb-auto overflow-clip">
-      <li *ngFor="let item of modulesManifest">
-        <a class="whitespace-nowrap h-14 block btn-common"
-           routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
+    <ng-scrollbar autoWidthDisabled="false" class="w-full">
+      <ul class="flex flex-col gap-4 mt-2 mb-auto pb-2 w-full overflow-x-clip">
+        <li *ngFor="let item of modulesManifest" class="w-full">
+          <a class="whitespace-nowrap h-14 block btn-common"
+             routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
           <span class="w-10 inline-flex justify-center align-middle">
-            <i class="{{item.data?.['icon']}} text-4xl m-auto"></i>
+            <i class="{{item.data.icon}} text-4xl m-auto"></i>
           </span>
-          <h3 class="inline-flex align-middle ml-6 h-full pr-1">
-            <span class="my-auto">{{item.title}}</span>
-          </h3>
-        </a>
-      </li>
-    </ul>
+            <h3 class="inline-flex align-middle ml-6 h-full pr-1">
+              <span class="my-auto">{{item.title}}</span>
+            </h3>
+          </a>
+        </li>
+      </ul>
+    </ng-scrollbar>
+
     <app-theme-btn></app-theme-btn>
     <app-locale-selector></app-locale-selector>
   </div>

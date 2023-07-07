@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --localize",
+    "build-dev": "ng build --configuration development --localize",
     "watch": "ng build --watch --configuration development --localize",
     "test": "ng test",
     "translate-uk": "xlf2xlf -i src/locale/source/messages.xlf -o src/locale/translated/uk/messages.xlf -f en -t uk -c 1",
@@ -16,6 +17,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
+    "@angular/cdk": "^16.1.3",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
@@ -23,9 +25,12 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@faker-js/faker": "^8.0.2",
+    "ngx-scrollbar": "^13.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlf2xlf": "^1.1.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

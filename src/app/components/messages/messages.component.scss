@@ -1,0 +1,38 @@
+.messages-container {
+  z-index: 9999;
+}
+
+.card-msg {
+  animation: spawn ease-in-out var(--msg-life-time);
+}
+
+@keyframes spawn {
+  0% {
+    display: none;
+    transform: translateX(100%);
+  }
+  1% {
+    display: block;
+  }
+  10% {
+    transform: translateX(-10%);
+  }
+  15% {
+    transform: translateX(5%);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  99% {
+
+    display: block;
+  }
+  100% {
+    transform: translateX(100%);
+    display: none;
+  }
+
+}

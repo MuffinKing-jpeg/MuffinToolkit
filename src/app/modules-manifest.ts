@@ -1,6 +1,6 @@
-import {Routes} from '@angular/router';
+import {ModulesRoutes} from '../interfaces/modulesRoutes.interface';
 
-export const modulesManifest: Routes = [
+export const modulesManifest: ModulesRoutes = [
   {
     title: $localize`Discount calculator`,
     path: 'discounter',
@@ -9,5 +9,14 @@ export const modulesManifest: Routes = [
       icon: 'fa-solid fa-percent',
       title: $localize`Discount calculator`
     }
-  }
+  },
+  {
+    title: $localize`Randomizer`,
+    path: 'random',
+    loadChildren: () => import('./modules/random/random.module').then(m => m.RandomModule),
+    data: {
+      icon: 'fa-solid fa-shuffle',
+      title: $localize`Randomizer`
+    }
+  },
 ]

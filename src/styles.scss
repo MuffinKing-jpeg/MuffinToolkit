@@ -12,7 +12,8 @@ i {
   transition: transform var(--transition-main);
 }
 
-body {
+body,
+.navbar {
   transition: background-color ease-in var(--transition-main), color ease-out var(--transition-secondary);
 }
 
@@ -21,8 +22,12 @@ body {
 }
 
 .btn-common {
-  @apply rounded-roundEdge p-2 text-dark-secondary bg-sky-500 hover:bg-sky-400;
+  @apply rounded-roundEdge p-2 text-dark-secondary bg-sky-500 hover:bg-sky-400 border-0 ring-0 focus:ring-sky-500;
   transition: background-color var(--transition-main);
+
+  &[disabled] {
+    @apply bg-field-light dark:bg-field-dark;
+  }
 }
 
 .btn-inline {
@@ -35,6 +40,40 @@ body {
   transition: color var(--transition-secondary);
 }
 
+.card {
+  @apply p-2 rounded-roundEdge m-2
+}
+
+.card-warn {
+  @apply bg-amber-300 text-black
+}
+
+.card-info {
+  @apply bg-sky-200 text-black
+}
+
+.card-error {
+  @apply bg-rose-400 text-black
+}
+
+.container-page {
+  @apply flex  my-4 flex-col py-2 w-full mx-auto pb-navbarClosedMobile
+}
+
+.toggle {
+  &-container {
+    @apply relative inline-flex items-center cursor-pointer
+  }
+
+  &-circle {
+    @apply w-11 h-6 bg-field-light  rounded-full dark:bg-field-dark after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600
+  }
+
+  &-text {
+    @apply ml-3 text-sm font-medium
+  }
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -44,3 +83,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.scrollbar {
+  --scrollbar-thumb-color: #38bdf8 !important;
+}
+
+.ng-scroll-content {
+  display: block !important;
+}
+

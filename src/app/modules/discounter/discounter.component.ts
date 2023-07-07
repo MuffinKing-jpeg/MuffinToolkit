@@ -3,11 +3,14 @@ import {ActivatedRoute} from '@angular/router';
 import {debounce, interval, Subscription} from 'rxjs';
 import {FormGroup} from '@angular/forms';
 import {valuesControls} from './form.controls';
-import {fromStart} from "./calculators/fromStart";
-import {fromEnd} from "./calculators/fromEnd";
-import {fromPercent} from "./calculators/fromPercent";
-import {fromAbsolute} from "./calculators/fromAbsolute";
-import {environment} from "../../../environments/environment";
+import {fromStart} from './calculators/fromStart';
+import {fromEnd} from './calculators/fromEnd';
+import {fromPercent} from './calculators/fromPercent';
+import {fromAbsolute} from './calculators/fromAbsolute';
+import {environment} from '../../../environments/environment';
+import {MessagingService} from '../../services/messaging/messaging.service';
+import {dataSubscription} from '../../shared/functions/dataSubscription';
+import {ToolsComponentInterface} from '../../../interfaces/toolsComponent.interface';
 
 const inputDebounce = 350
 
@@ -16,7 +19,7 @@ const inputDebounce = 350
   templateUrl: './discounter.component.html',
   styleUrls: ['./discounter.component.scss']
 })
-export class DiscounterComponent implements OnInit, OnDestroy {
+export class DiscounterComponent implements OnInit, OnDestroy, ToolsComponentInterface {
   dataSubscription?: Subscription
   startChange?: Subscription
   endChange?: Subscription
@@ -28,20 +31,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
   valuesControls = valuesControls;
   protected readonly isDevMode = environment.isDev;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private message: MessagingService) {
   }
 
   ngOnInit() {
-    this.dataSubscription = this.route.data.subscribe({
-      next: v => {
-        this.title = v?.['title']
-        this.icon = v?.['icon']
-      },
-      error: err => {
-        console.error(err)
-        this.title = $localize`Disaster! Something broke! Look in THE console!`
-      }
-    })
+    this.dataSubscription = dataSubscription(this, this.route, this.message)
     this.valuesForm = new FormGroup({
       ...valuesControls
     })
@@ -56,7 +50,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromStart(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.endChange = valuesControls.endValue.valueChanges.pipe(
@@ -64,7 +62,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromEnd(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.percentChange = valuesControls.percent.valueChanges.pipe(
@@ -72,7 +74,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromPercent(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
     this.absoluteChange = valuesControls.absoluteValue.valueChanges.pipe(
@@ -80,7 +86,11 @@ export class DiscounterComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: () => fromAbsolute(),
       error: (err) => {
-        console.error(err)
+        this.message.sendMessage({
+          type: 'error',
+          msg: err.message,
+          heading: err.name
+        })
       }
     })
   }
