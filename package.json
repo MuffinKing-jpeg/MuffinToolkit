@@ -8,11 +8,12 @@
     "build-dev": "ng build --configuration development --localize",
     "watch": "ng build --watch --configuration development --localize",
     "test": "ng test",
-    "translate-uk": "xlf2xlf -i src/locale/source/messages.xlf -o src/locale/translated/uk/messages.xlf -f en -t uk -c 1",
-    "translate-ru": "xlf2xlf -i src/locale/source/messages.xlf -o src/locale/translated/ru/messages.xlf -f en -t ru -c 1",
-    "extract-locale": "ng extract-i18n --output-path src/locale/source",
+    "translate-uk": "xlf2xlf -i src/messages.xlf -o src/locales/messages.xlf -f en -t uk -c 1",
+    "translate-ru": "xlf2xlf -i src/messages.xlf -o src/locales/messages.xlf -f en -t ru -c 1",
+    "extract-locale": "ng extract-i18n --output-path src/",
     "translate": "npm run extract-locale && npm run translate-ru && npm run translate-uk",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "t9n": "ng run MuffinToolkit:t9n"
   },
   "private": true,
   "dependencies": {
@@ -51,6 +52,7 @@
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
+    "angular-t9n": "^16.0.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.40.0",
     "eslint-config-google": "^0.14.0",
