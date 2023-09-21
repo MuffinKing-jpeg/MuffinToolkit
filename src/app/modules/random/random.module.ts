@@ -5,7 +5,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {UserComponent} from './user/user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ToggleModule} from '../../shared/components/forms/toggle/toggle.module';
-import {NgScrollbar} from 'ngx-scrollbar';
 import {randomChildren} from './randomModulesManifest';
 import {NicknamerComponent} from './nicknamer/nicknamer.component';
 
@@ -34,8 +33,7 @@ const routes: Routes = [
     ToggleModule,
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    NgScrollbar
+    ReactiveFormsModule
   ]
 })
 export class RandomModule {

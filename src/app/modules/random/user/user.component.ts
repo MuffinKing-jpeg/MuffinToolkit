@@ -8,11 +8,11 @@ import {LoadingService} from '../../../services/loading/loading.service';
 import {RandomUsersTableInterface, UsersTableBodyInterface} from '../../../../interfaces/randomUsersTable.interface';
 import {environment} from '../../../../environments/environment';
 import {Faker, Sex} from '@faker-js/faker';
-import {writeContents} from "../../../shared/functions/fileWriter";
-import {Subscription} from "rxjs";
-import {ToolsComponentInterface} from "../../../../interfaces/toolsComponent.interface";
+import {writeContents} from '../../../shared/functions/fileWriter';
+import {Subscription} from 'rxjs';
+import {ToolsComponentInterface} from '../../../../interfaces/toolsComponent.interface';
 import {dataSubscription} from '../../../shared/functions/dataSubscription'
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -42,10 +42,10 @@ export class UserComponent implements OnInit, OnDestroy, ToolsComponentInterface
       uuid: new FormControl(false)
     }, [atLeastOne])
   })
-  protected readonly ToggleBtnComponent = ToggleBtnComponent;
-  protected readonly FieldsList = FieldsList;
-  protected readonly environment = environment;
-  protected readonly Object = Object;
+  readonly ToggleBtnComponent = ToggleBtnComponent;
+  readonly FieldsList = FieldsList;
+  readonly environment = environment;
+  readonly Object = Object;
 
   constructor(private message: MessagingService, private loading: LoadingService, private route: ActivatedRoute) {
   }
@@ -99,7 +99,7 @@ export class UserComponent implements OnInit, OnDestroy, ToolsComponentInterface
       const JSON_TYPE = 'application/json;charset=UTF-8'
       const JSON_EXTENSION = '.json'
       const blob = new Blob([new TextEncoder().encode(JSON.stringify(this.usersTable.body, null, 4))], {
-        type: "application/json;charset=utf-8"
+        type: 'application/json;charset=utf-8'
       })
       writeContents(blob, 'random_users', JSON_TYPE, JSON_EXTENSION)
       this.loading.isLoading.next(false)

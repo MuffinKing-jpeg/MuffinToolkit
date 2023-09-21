@@ -127,7 +127,7 @@
         "t9n": {
           "builder": "angular-t9n:t9n",
           "options": {
-            "translationFile": "src/messages.xlf",
+            "translationFile": "messages.xlf",
             "targetTranslationPath": "src/locales",
             "includeContextInTarget": true
           }

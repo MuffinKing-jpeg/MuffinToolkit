@@ -10,7 +10,6 @@ import {LocaleSelectorComponent} from './components/locale-selector/locale-selec
 import {ThemeBtnComponent} from './components/theme-btn/theme-btn.component';
 import {RouteLoadingComponent} from './components/route-loading/route-loading.component';
 import {MessagesComponent} from './components/messages/messages.component';
-import {NgScrollbar} from "ngx-scrollbar";
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import {NgScrollbar} from "ngx-scrollbar";
     MessagesComponent,
   ],
   imports: [
-    NgScrollbar,
     BrowserModule,
     AppRoutingModule
   ],

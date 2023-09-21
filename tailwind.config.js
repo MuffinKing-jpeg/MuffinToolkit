@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   important: true,
   darkMode: "class",
@@ -44,7 +45,11 @@ module.exports = {
         "light-main": "#F8F8FC",
         "light-secondary": "#060607",
         "field-dark": "#4e5059",
-        "field-light": "#d4d8d9"
+        "field-light": "#d4d8d9",
+        accent: colors.sky,
+        warning: colors.amber,
+        danger: colors.rose,
+        success: colors.emerald
       },
       spacing: {
         navbarClosed: '5rem',
