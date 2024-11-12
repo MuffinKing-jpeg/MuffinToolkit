@@ -19,4 +19,13 @@ export const modulesManifest: ModulesRoutes = [
       title: $localize`Randomizer`
     }
   },
+  {
+    title: $localize`Hasher`,
+    path: 'hasher',
+    loadChildren: () => import('./modules/hasher/hasher.module').then(m => m.HasherModule),
+    data: {
+      icon: 'fa-solid fa-hashtag',
+      title: $localize`Hasher`
+    }
+  },
 ]

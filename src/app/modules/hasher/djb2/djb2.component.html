@@ -1,0 +1,57 @@
+<h3 class="text-xl text-center" i18n>DJB2</h3>
+<div class="flex flex-col justify-center gap-4 w-full">
+  <div class="flex">
+    <div class="w-full">
+      <form *ngIf="valuesForm" [formGroup]="valuesForm" class="flex flex-col flex-wrap">
+        <div class="form-rows">
+          <div>
+            <label for="primeValue" i18n>Prime number</label>
+            <div class="flex">
+              <input [formControl]="valuesControls.primeValue" class="input-common w-full rounded-r-none"
+                     id="primeValue"
+                     name="Start price"
+                     type="number">
+              <button (click)="valuesControls.primeValue.setValue(5381,{emitEvent: false})"
+                      class="btn-common rounded-l-none">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <label for="str" i18n>String</label>
+            <div class="flex">
+              <input [formControl]="valuesControls.str" class="input-common w-full rounded-r-none" id="str"
+                     name="Start price"
+                     type="text">
+              <button (click)="valuesControls.str.setValue('',{emitEvent: false})"
+                      class="btn-common rounded-l-none">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-cols">
+          <label for="hash" i18n>HASH</label>
+          <div class="flex">
+            <input [formControl]="valuesControls.hash" class="input-common w-full rounded-r-none" id="hash"
+                   name="Start price"
+                   readonly
+                   type="number">
+            <button (click)="copyToClipboard(valuesControls.hash.value)" class="btn-common rounded-l-none"><i
+              class="fa-regular fa-clipboard"></i></button>
+          </div>
+        </div>
+        <div class="form-rows">
+          <button (click)="valuesForm.reset()" class="btn-common w-full my-2">(╯°□°）╯︵ ┻━┻</button>
+          <button (click)="calculateHash(valuesControls.str.value)" class="btn-common w-full my-2">HASH IT!</button>
+        </div>
+      </form>
+      <div class="px-4">
+
+      </div>
+      <pre *ngIf="isDevMode">{{valuesForm?.value | json}}</pre>
+    </div>
+  </div>
+
+</div>
+
