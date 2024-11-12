@@ -9,8 +9,7 @@
           "code": "en"
         },
         "locales": {
-          //          "ru": "src/locale/messages.ru.xlf",
-          //          "uk": "src/locale/messages.uk.xlf"
+          "uk": "src/locales/messages.uk.xlf"
         }
       },
       "projectType": "application",
@@ -123,6 +122,14 @@
               "src/**/*.ts",
               "src/**/*.html"
             ]
+          }
+        },
+        "t9n": {
+          "builder": "angular-t9n:t9n",
+          "options": {
+            "translationFile": "messages.xlf",
+            "targetTranslationPath": "src/locales",
+            "includeContextInTarget": true
           }
         }
       }

@@ -1,0 +1,12 @@
+.form-cols {
+  @apply flex flex-col m-auto w-full sm:w-1/2 p-4 gap-2
+}
+
+.form-rows {
+  @apply flex flex-row m-auto w-full sm:w-1/2 p-4 gap-4 justify-between
+}
+
+
+input:focus + .btn-common {
+  @apply border-0 ring-1 ring-sky-500
+}

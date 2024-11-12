@@ -58,25 +58,22 @@
       </div>
     </div>
   </div>
-  <div>
-    <ng-scrollbar *ngIf="usersTable.heading.length > 0" autoHeightDisabled="false"
-                  class="scrollbar" track="horizontal">
-      <div class="py-4">
-        <table class="users-table w-full border-spacing-x-1 border-separate whitespace-nowrap">
-          <thead>
-          <tr>
-            <th *ngFor="let item of usersTable.heading"
-                class="p-1 bg-field-light dark:bg-field-dark font-bold">{{item}}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of usersTable.body" class="users-table-row">
-            <td *ngFor="let value of Object.values(item)" class="p-1 font-light">{{value}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </ng-scrollbar>
+  <div *ngIf="usersTable.body.length > 0" class="overflow-x-scroll">
+    <div class="py-4">
+      <table class="users-table w-full border-spacing-x-1 border-separate whitespace-nowrap">
+        <thead>
+        <tr>
+          <th *ngFor="let item of usersTable.heading"
+              class="p-1 bg-field-light dark:bg-field-dark font-bold">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of usersTable.body; index as i" class="users-table-row">
+          <td *ngFor="let value of Object.values(usersTable.body[i])" class="p-1 font-light">{{value}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

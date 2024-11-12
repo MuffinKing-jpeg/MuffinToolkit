@@ -31,21 +31,19 @@ flex-col">
       <i class="fa-solid fa-screwdriver-wrench text-5xl px-1"></i>
       <h2 class="ml-5 inline text-3xl">{{title}}</h2>
     </a>
-    <ng-scrollbar autoWidthDisabled="false" class="w-full">
-      <ul class="flex flex-col gap-4 mt-2 mb-auto pb-2 w-full overflow-x-clip">
-        <li *ngFor="let item of modulesManifest" class="w-full">
-          <a class="whitespace-nowrap h-14 block btn-common"
-             routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
+    <ul class="flex flex-col gap-4 mt-2 mb-auto pb-2 w-full overflow-x-clip">
+      <li *ngFor="let item of modulesManifest" class="w-full">
+        <a class="whitespace-nowrap h-14 block btn-common"
+           routerLink="{{item.path}}" routerLinkActive="bg-sky-300">
           <span class="w-10 inline-flex justify-center align-middle">
             <i class="{{item.data.icon}} text-4xl m-auto"></i>
           </span>
-            <h3 class="inline-flex align-middle ml-6 h-full pr-1">
-              <span class="my-auto">{{item.title}}</span>
-            </h3>
-          </a>
-        </li>
-      </ul>
-    </ng-scrollbar>
+          <h3 class="inline-flex align-middle ml-6 h-full pr-1">
+            <span class="my-auto">{{item.title}}</span>
+          </h3>
+        </a>
+      </li>
+    </ul>
 
     <app-theme-btn></app-theme-btn>
     <app-locale-selector></app-locale-selector>

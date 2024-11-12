@@ -1,33 +1,31 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RandomComponent} from './random.component';
+import {HasherComponent} from './hasher.component';
+import {Djb2Component} from './djb2/djb2.component';
 import {RouterModule, Routes} from '@angular/router';
-import {UserComponent} from './user/user.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {hasherChildren} from './hasherModulesManifest';
 import {ToggleModule} from '../../shared/components/forms/toggle/toggle.module';
-import {randomChildren} from './randomModulesManifest';
-import {NicknamerComponent} from './nicknamer/nicknamer.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '',
-    component: RandomComponent,
+    component: HasherComponent,
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: randomChildren[0].path
+        redirectTo: hasherChildren[0].path
       },
-      ...randomChildren
+      ...hasherChildren
     ]
   }
 ]
 
 @NgModule({
   declarations: [
-    RandomComponent,
-    UserComponent,
-    NicknamerComponent
+    HasherComponent,
+    Djb2Component
   ],
   imports: [
     ToggleModule,
@@ -36,5 +34,5 @@ const routes: Routes = [
     ReactiveFormsModule
   ]
 })
-export class RandomModule {
+export class HasherModule {
 }

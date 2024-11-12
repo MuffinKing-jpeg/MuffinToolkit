@@ -29,7 +29,7 @@ export class DiscounterComponent implements OnInit, OnDestroy, ToolsComponentInt
   icon?: string
   valuesForm?: FormGroup
   valuesControls = valuesControls;
-  protected readonly isDevMode = environment.isDev;
+  readonly isDevMode = environment.isDev;
 
   constructor(private route: ActivatedRoute, private message: MessagingService) {
   }
